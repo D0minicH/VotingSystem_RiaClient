@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64db3551-60b3-4976-bbfe-ebf65ec8116f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Header.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="306">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -38,7 +31,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="51">
               <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -50,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
+            <state relative-caret-position="170">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#4#30#0" expanded="true" />
               </folding>
@@ -85,17 +78,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="riaclient" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\Dominic\Programmierprojekte\Semester6\kvanc\riaclient" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -113,6 +95,17 @@
               <item name="riaclient" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="riaclient" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Dominic\Programmierprojekte\Semester6\kvanc\riaclient" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
           </expand>
           <select />
@@ -183,7 +176,8 @@
       <workItem from="1554727720060" duration="3533000" />
       <workItem from="1554741254549" duration="1556000" />
       <workItem from="1554747529269" duration="853000" />
-      <workItem from="1555320755404" duration="9686000" />
+      <workItem from="1555320755404" duration="9769000" />
+      <workItem from="1555417801397" duration="1008000" />
     </task>
     <task id="LOCAL-00001" summary="Added files &quot;App&quot; and &quot;Header&quot; for initial setup">
       <created>1554731458524</created>
@@ -199,11 +193,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554731536778</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="CORS &amp; Ajax extension, not fully tested with server yet">
+      <created>1555416100960</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1555416100961</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15628000" />
+    <option name="totallyTimeSpent" value="16719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1346" height="861" extended-state="6" />
@@ -235,21 +236,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added files &quot;App&quot; and &quot;Header&quot; for initial setup" />
     <MESSAGE value="last input lesson 8" />
-    <option name="LAST_COMMIT_MESSAGE" value="last input lesson 8" />
+    <MESSAGE value="CORS &amp; Ajax extension, not fully tested with server yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="CORS &amp; Ajax extension, not fully tested with server yet" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_ab2.zip/ab2/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_ab2.zip/ab2/src/index.js" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -259,8 +253,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="306">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -269,7 +263,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="51">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -279,8 +273,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#4#30#0" expanded="true" />
           </folding>

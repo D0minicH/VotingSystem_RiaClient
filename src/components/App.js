@@ -8,7 +8,6 @@ export default class App extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            title: ''
         };
     }
 
@@ -19,7 +18,7 @@ export default class App extends React.Component {
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        questionText: result.title
+                        questionText: result.questionText
                     });
                 },
                 // Note: it's important to handle errors here
