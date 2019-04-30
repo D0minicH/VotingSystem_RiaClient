@@ -19,20 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Header.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="323">
               <caret line="19" selection-start-line="19" selection-end-line="19" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -43,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="187">
+              <caret line="26" column="14" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="14" />
               <folding>
                 <element signature="e#4#30#0" expanded="true" />
               </folding>
@@ -78,6 +66,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="riaclient" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Dominic\Programmierprojekte\Semester6\kvanc\riaclient" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -95,17 +94,6 @@
               <item name="riaclient" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="riaclient" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\Dominic\Programmierprojekte\Semester6\kvanc\riaclient" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
           </expand>
           <select />
@@ -177,7 +165,9 @@
       <workItem from="1554741254549" duration="1556000" />
       <workItem from="1554747529269" duration="853000" />
       <workItem from="1555320755404" duration="9769000" />
-      <workItem from="1555417801397" duration="1008000" />
+      <workItem from="1555417801397" duration="1095000" />
+      <workItem from="1556107734427" duration="424000" />
+      <workItem from="1556531846067" duration="4198000" />
     </task>
     <task id="LOCAL-00001" summary="Added files &quot;App&quot; and &quot;Header&quot; for initial setup">
       <created>1554731458524</created>
@@ -200,11 +190,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555416100961</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fetch fully functional, tested with server">
+      <created>1555418877527</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1555418877527</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16719000" />
+    <option name="totallyTimeSpent" value="21428000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1346" height="861" extended-state="6" />
@@ -237,7 +234,8 @@
     <MESSAGE value="Added files &quot;App&quot; and &quot;Header&quot; for initial setup" />
     <MESSAGE value="last input lesson 8" />
     <MESSAGE value="CORS &amp; Ajax extension, not fully tested with server yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="CORS &amp; Ajax extension, not fully tested with server yet" />
+    <MESSAGE value="fetch fully functional, tested with server" />
+    <option name="LAST_COMMIT_MESSAGE" value="fetch fully functional, tested with server" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/package.json">
@@ -251,9 +249,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="323">
           <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -261,10 +269,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_ub2.zip/ub2/src/components/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="459">
+          <caret line="27" column="40" lean-forward="true" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -273,8 +281,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="187">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="14" />
           <folding>
             <element signature="e#4#30#0" expanded="true" />
           </folding>

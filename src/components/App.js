@@ -6,55 +6,41 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            error: null,
-            isLoaded: false,
+            title: "Hello from JavaScript Client"
         };
     }
 
     componentDidMount() {
         fetch("http://localhost:8080/votes/question")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        questionText: result.questionText
-                    });
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
+            .then(res => {
+                if ((!res.ok) || (res.status !== 200)) {
+                    throw new Error('Error from the server')
+                } else {
+                    return res.json()
                 }
-            )
+            })
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    title: response.questionText
+                })
+            })
+            .catch(() => {
+                this.setState({
+                    title: "No question"
+                })
+            })
     }
     render() {
-        const { error, isLoaded, questionText } = this.state;
+        const props = this.state;
 
-        if (error) {
             return (
                 <div className="container-fluid">
-                    <Header title="No question"
-                            status="This is a status"
-                            isError={true}
-                    />
-                </div>
-            );
-        } else if (!isLoaded) {
-            return <div>Loading...</div>;
-        } else {
-            return (
-                <div className="container-fluid">
-                    <Header title={questionText}
-                            status="This is a status"
-                            isError={true}
+                    <Header title={props.title}
+                            status="Running"
+                            isError={false}
                     />
                 </div>
             )
         }
-    }
 }
