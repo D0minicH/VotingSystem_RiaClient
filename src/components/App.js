@@ -17,11 +17,48 @@ class App extends Component {
         this.register = this.register.bind(this);
     }
 
-    componentDidMount() {
-        console.log("Server set to '%s'", SERVER_URL);
+    async loadConfig() {
+        try {
+            const response = await fetch("application.json");
+            const config = await response.json();
+            SERVER_URL = config.SERVER_URL ? config.SERVER_URL : SERVER_URL;
+            console.log("JSON-Config: Server set to '%s'", SERVER_URL);
+        } catch (err) {
+            console.log("File 'application.json' not found");
+        }
     }
 
-    pollForQuestion() {
+    componentDidMount() {
+        console.log("Default: Server set to '%s'", SERVER_URL);
+        SERVER_URL = process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : SERVER_URL;
+        console.log("Env: Server set to '%s'", SERVER_URL);
+        SERVER_URL = window._env_.SERVER_URL ? window._env_.SERVER_URL : SERVER_URL;
+        console.log("JS-Config: Server set to '%s'", SERVER_URL);
+        this.loadConfig();
+    }
+
+    connectWebSocket() {
+        this.socket = new WebSocket('ws://' + SERVER_URL + '/wsVoting');
+        this.socket.onopen = () => {
+            console.log('WebSocket connected successfully');
+        };
+        this.socket.onmessage = (messageEvent) => {
+            console.log("message received: '%s'", messageEvent.data);
+            this.setState({
+                question: messageEvent.data,
+            });
+        };
+        this.socket.onclose = (event) => {
+            console.warn(event);
+            this.setState({
+                errorMessage: 'System Reset!',
+                question: this.props.question,
+                isRegistered: false
+            });
+        };
+    }
+
+   /* pollForQuestion() {
         fetch("http://" + SERVER_URL + "/votes/question")
             .then(res => {
                 if (!res.ok) {
@@ -44,7 +81,7 @@ class App extends Component {
                     question: "No question"
                 })
             })
-    }
+    }*/
 
     register(email) {
         if (email.length === 0) {
@@ -62,14 +99,20 @@ class App extends Component {
             body: JSON.stringify(tokenDto)
         });
         fetch(request).then(res => {
+            // The ok read-only property of the Response interface contains a Boolean
+            // stating whether the response was successful (status in the range 200-299) or not.
             if (!res.ok) {
                 throw Error('Already registered from this computer!')
             }
             return res.json()
         }).then(json => {
+            // start polling
+            /*
             setInterval(() => {
-                this.pollForQuestion();
+              this.pollForQuestion();
             }, 1000)
+            */
+            this.connectWebSocket();
             this.setState({
                 isRegistered: true,
                 token: json.token
@@ -130,13 +173,14 @@ class App extends Component {
         if (!res.ok) {
           throw Error('Already registered from this computer!')
         }
-        const json = await res.json();
+        const js = await res.json();
+        // start polling
         setInterval(() => {
           this.pollForQuestion();
         }, 1000)
         this.setState({
           isRegistered: true,
-          token: json.token
+          token: js.token
         })
       } catch(err) {
         console.error(err);
