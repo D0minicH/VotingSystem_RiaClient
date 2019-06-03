@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
+import {Col, Container, Row} from 'reactstrap';
 import Header from './Header';
 import RegisterBox from './RegisterBox';
+import Question from "./Question";
+import VoteButton from "./VoteButton";
 
 let SERVER_URL = 'localhost:8080';
 
@@ -11,8 +13,9 @@ class App extends Component {
         this.state = {
             question: this.props.question,
             isRegistered: false,
+            canVote: false,
             errorMessage: ''
-        }
+        };
         // Binding is needed to be able access 'this' within the handler method!
         this.register = this.register.bind(this);
     }
@@ -58,32 +61,7 @@ class App extends Component {
         };
     }
 
-   /* pollForQuestion() {
-        fetch("http://" + SERVER_URL + "/votes/question")
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error('Error from the server')
-                }
-                return res.json()
-            })
-            .then(json => {
-                let actQuestion = 'Waiting for new question...';
-                if (json.questionText.length > 0) {
-                    actQuestion = json.questionText
-                }
-                this.setState({
-                    question: actQuestion
-                })
-            })
-            .catch(err => {
-                console.log(err);
-                this.setState({
-                    question: "No question"
-                })
-            })
-    }*/
-
-    register(email) {
+    async register(email) {
         if (email.length === 0) {
             console.error('No email set!')
             return
@@ -98,111 +76,94 @@ class App extends Component {
             }),
             body: JSON.stringify(tokenDto)
         });
-        fetch(request).then(res => {
-            // The ok read-only property of the Response interface contains a Boolean
-            // stating whether the response was successful (status in the range 200-299) or not.
+        try {
+            const res = await fetch(request);
             if (!res.ok) {
                 throw Error('Already registered from this computer!')
             }
-            return res.json()
-        }).then(json => {
-            // start polling
-            /*
-            setInterval(() => {
-              this.pollForQuestion();
-            }, 1000)
-            */
+            const js = await res.json();
             this.connectWebSocket();
             this.setState({
                 isRegistered: true,
-                token: json.token
+                token: js.token
             })
-        }).catch(err => {
+        } catch (err) {
             console.error(err);
             this.setState({
                 errorMessage: err.message
             })
-        })
-    }
-
-    /*
-    async pollForQuestion() {
-      try {
-        const res = await fetch("http://" + SERVER_URL + "/votes/question")
-        if (!res.ok) {
-          throw new Error('Error from the server')
-        } else {
-          let actQuestion = 'Waiting for new question...'
-          if (res.status === 200) {
-            const json = await res.json();
-            if (json.questionText.length > 0) {
-              actQuestion = json.questionText
-            }
-          }
-          this.setState({
-            question: actQuestion
-          })
-      }
-      } catch (e) {
-        console.log(e);
-        this.setState({
-          question: "No question"
-        })
-      }
-    }
-    */
-
-    /*
-    async register(email) {
-      if (email.length === 0) {
-        console.error('No email set!')
-        return
-      }
-      const tokenDto = {
-        'email': email
-      }
-      const request = new Request('http://' + SERVER_URL + '/votes', {
-        method: 'POST',
-        headers: new Headers({
-          'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify(tokenDto)
-      });
-      try {
-        const res = await fetch(request);
-        if (!res.ok) {
-          throw Error('Already registered from this computer!')
         }
-        const js = await res.json();
-        // start polling
-        setInterval(() => {
-          this.pollForQuestion();
-        }, 1000)
-        this.setState({
-          isRegistered: true,
-          token: js.token
-        })
-      } catch(err) {
-        console.error(err);
-        this.setState({
-          errorMessage: err.message
-        })
-      }
     }
-    */
+
+    async vote(answer) {
+        if (this.state.canVote) {
+            console.log(answer.message);
+            const voteDTO = {
+                vote: (answer.message === 'Yes')
+            }
+            const url = 'http://' + SERVER_URL + '/votes/' + this.state.token;
+            var request = new Request(url, {
+                method: 'PUT',
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                }),
+                body: JSON.stringify(voteDTO)
+            });
+            try {
+                const response = await fetch(request);
+                if (!response.ok) {
+                    throw Error('HTTP Status Code received: ' + response.status)
+                }
+                this.setState({
+                    canVote: false,
+                    question: 'Waiting for new question...'
+                })
+            } catch (err) {
+                console.error(err);
+                this.setState({
+                    canVote: false,
+                    question: 'Error happened...'
+                })
+            }
+        }
+    }
+
 
     render() {
         return (
             <Container fluid>
                 <Header
                     title='Interactive Voting System'
-                    lead='Version 0.0.1' />
+                    lead='Version 0.1.0' />
                 {(!this.state.isRegistered) ? (
                     <RegisterBox handler={this.register}
                                  error={this.state.errorMessage}
                     />
                 ) : (
-                    <h2>{this.state.question}</h2>
+                    <div>
+                        <Row>
+                            <Col>
+                                <Question message={this.state.question} />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs="6">
+                                <VoteButton
+                                    isActive={this.state.canVote}
+                                    color='success'
+                                    message='Yes'
+                                    handler={this.vote} />
+                            </Col>
+                            <Col xs="6">
+                                <VoteButton
+                                    isActive={this.state.canVote}
+                                    color='danger'
+                                    message='No'
+                                    handler={this.vote} />
+                            </Col>
+                        </Row>
+                    </div>
+
                 )}
             </Container>
         );
