@@ -5,6 +5,8 @@ const error = {
     color: 'red'
 };
 
+/*Über diese Komponente kann die Email für die Registrierung eingegeben werden. Der Button
+"Register" ruft die "register()" Methode in der Komponente App auf.*/
 export default class RegisterBox extends React.Component {
     constructor(props) {
         super(props);

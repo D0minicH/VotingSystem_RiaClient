@@ -11,7 +11,8 @@ const buttonStyle = {
 const VoteButton = ({ isActive, color, message, handler }) => (
     <Button
         outline style={buttonStyle} 
-        color={isActive ? color : 'second'}
+        color={isActive ? color : 'secondary'}
+        disabled={!isActive}
         onClick={() => handler({message})}>{message}</Button>
 )
 

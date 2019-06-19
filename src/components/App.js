@@ -15,9 +15,10 @@ class App extends Component {
             isRegistered: false,
             canVote: false,
             errorMessage: ''
-        };
+        }
         // Binding is needed to be able access 'this' within the handler method!
         this.register = this.register.bind(this);
+        this.vote = this.vote.bind(this);
     }
 
     async loadConfig() {
@@ -35,9 +36,9 @@ class App extends Component {
         console.log("Default: Server set to '%s'", SERVER_URL);
         SERVER_URL = process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : SERVER_URL;
         console.log("Env: Server set to '%s'", SERVER_URL);
-        SERVER_URL = window._env_.SERVER_URL ? window._env_.SERVER_URL : SERVER_URL;
+        SERVER_URL = window._env.SERVER_URL ? window._env.SERVER_URL : SERVER_URL;
         console.log("JS-Config: Server set to '%s'", SERVER_URL);
-        this.loadConfig();
+        //this.loadConfig();
     }
 
     connectWebSocket() {
@@ -49,6 +50,7 @@ class App extends Component {
             console.log("message received: '%s'", messageEvent.data);
             this.setState({
                 question: messageEvent.data,
+                canVote: true
             });
         };
         this.socket.onclose = (event) => {
@@ -99,8 +101,8 @@ class App extends Component {
         if (this.state.canVote) {
             console.log(answer.message);
             const voteDTO = {
-                vote: (answer.message === 'Yes')
-            }
+                vote: (answer.message === 'Yes' ? true : false)
+            };
             const url = 'http://' + SERVER_URL + '/votes/' + this.state.token;
             var request = new Request(url, {
                 method: 'PUT',
@@ -128,13 +130,12 @@ class App extends Component {
         }
     }
 
-
     render() {
         return (
             <Container fluid>
                 <Header
                     title='Interactive Voting System'
-                    lead='Version 0.1.0' />
+                    lead='v0.1.0' />
                 {(!this.state.isRegistered) ? (
                     <RegisterBox handler={this.register}
                                  error={this.state.errorMessage}
@@ -163,7 +164,6 @@ class App extends Component {
                             </Col>
                         </Row>
                     </div>
-
                 )}
             </Container>
         );
