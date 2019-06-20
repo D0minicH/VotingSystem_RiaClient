@@ -5,7 +5,7 @@ import RegisterBox from './RegisterBox';
 import Question from "./Question";
 import VoteButton from "./VoteButton";
 
-let SERVER_URL = 'localhost:8080';
+let SERVER_URL;
 
 class App extends Component {
     constructor(props) {
